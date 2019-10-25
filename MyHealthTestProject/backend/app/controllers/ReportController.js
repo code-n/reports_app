@@ -9,20 +9,26 @@ const router = express.Router();
 
 // CREATES A NEW REPORT
 router.post('/create', VerifyToken, (req, res) => {	
-	const report = new Report({
-		userId : req.userId,
-		reportMessage : req.body.reportMessage
-	});
-    report.save((err, report_info) => {
-		if(!err)
-		{
-			res.send(report_info);
-		}
+	try{
+		if(!req.body.reportMessage && !req.userId) throw "Oops! you forgot the parameters: message and user's Id";
 		
-		if (err) {
-            res.status(500).send(err);
-        }
-    });
+		const report = new Report({
+			userId : req.userId,
+			reportMessage : req.body.reportMessage
+		});
+		report.save((err, report_info) => {
+			if(!err)
+			{
+				res.send(report_info);
+			}
+			
+			if (err) {
+				res.status(500).send(err);
+			}
+		});
+	}catch(e){
+		res.send(e);
+	}
 });
 
 // RETURNS ALL THE REPORTS IN THE DATABASE
@@ -79,12 +85,16 @@ router.get('/:reportId', VerifyToken, (req, res) => {
 
 // CREATES A NEW RESPONSE
 router.post('/:reportId', VerifyToken, (req, res) => {
-	//if (!req.isAdmin) res.status(404).send("You don't have authorization to access this resource.");
-	console.log(req.body);
-	Report.findByIdAndUpdate(req.params.reportId, { $push : {"responses": req.body}}, {safe:true, upsert:true}, (err, response_info) => {
-
-        res.status(200).send(response_info);
-    });
+	try{
+		if(!req.body) throw "Oops! you forgot to send the response with parameters: senderName and responseMessage";
+		
+		Report.findByIdAndUpdate(req.params.reportId, { $push : {"responses": req.body}}, {safe:true, upsert:true}, (err, response_info) => {
+	
+			res.status(200).send(response_info);
+		});
+	}catch(e){
+		res.send(e);
+	}	
 });
 
 export default router;
