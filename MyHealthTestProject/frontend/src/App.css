@@ -1,0 +1,79 @@
+.App {
+  margin-top: 60px;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.card {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  border-radius: 4px;
+  background-color: white;
+  padding: 10px;
+}
+
+.container {
+  padding: 2px 16px;
+  max-width: 1200px;
+  flex-grow: 1;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.left {
+  justify-content: start;
+}
+
+.right {
+  justify-content: end;
+}
+
+.center {
+  justify-content: center;
+}
+
+.d-right {
+  margin-left: auto;
+}
+
+.d-left {
+  margin-right: auto;
+}
+
+.outline-button {
+  border: 1px solid #c41010;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-top: 10px;
+  padding-top: 10px;
+}
+
+.opa-fade {
+  opacity: .3;
+}
+
+.mt-20{
+	paddingTop: 20;
+}

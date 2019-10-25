@@ -1,0 +1,9 @@
+{
+    "Login":"/api/auth/login",
+    "SignUp":"/api/auth/register",
+    "CreateReport":"/api/reports/create",
+    "GetAllPatientReports":"/api/reports/sorted",
+    "GetMyReports":"/api/reports/single-user",
+    "GetOneReport":"/api/reports",
+    "PostResponse":"/api/reports"
+}
